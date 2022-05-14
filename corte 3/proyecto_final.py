@@ -32,7 +32,7 @@ cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)
 r1=False #rango1
 r2=""#rango2
 r3=""#rango3
-fun={"sin":"np.sin","cos":"np.cos", "tan":"np.tan", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log", "pi":"np.pi"} #guardar las funciones en un diccionario
+fun={"sin":"np.sin","cos":"np.cos", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log"} #guardar las funciones en un diccionario
 #=============================================================================================================================================================
 #                                       funciones
 #=============================================================================================================================================================
@@ -91,6 +91,7 @@ bo1=t.Button(ventana, text="graficar", command=represent)#crear boton
 e_func=t.Entry(ventana, width=60)#crear espacio de entrada
 e_var=t.Entry(ventana, width=20)#crear entrada de variación
 bo1.pack(side=t.BOTTOM)
+bo1.place(x=680, y=760)
 e_var.pack(side=t.RIGHT)#ubicar entrada de variación
 e_func.pack(side=t.BOTTOM)#ubicar el espacio
 
