@@ -91,7 +91,6 @@ bo1=t.Button(ventana, text="graficar", command=represent)#crear boton
 e_func=t.Entry(ventana, width=60)#crear espacio de entrada
 e_var=t.Entry(ventana, width=20)#crear entrada de variación
 bo1.pack(side=t.BOTTOM)
-bo1.place(x=680, y=760)
 e_var.pack(side=t.RIGHT)#ubicar entrada de variación
 e_func.pack(side=t.BOTTOM)#ubicar el espacio
 
