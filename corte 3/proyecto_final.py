@@ -43,6 +43,18 @@ def reemplazar(p): #Reemplaza la abreviación que usamos en las funciones especi
             p=p.replace(i, function_np[i])
     return p
     
+def represent():
+    global graf_dt
+    global r3
+    global r1
+    texto_ori=e_func.get()#El texto que obtiene de la barra para ingresar la función 
+    if e_var.get()!="":
+        rann=e_var.get()#El rango en x que obtiene de la barra para ingresar rango
+        r3=rann.split(",")#Separar el rango
+        r1=True
+    graf_dt=reemplazar(texto_ori)
+    ani.event_source.start()
+    
 def animate(i):
     global r1
     global r2
@@ -64,35 +76,26 @@ def animate(i):
         else:
           x=np.arange(0,10,0.01)
     try:
-        sl=eval(graf_dt)#evaluar los datos ingresados
+        sl=eval(graf_dt)#Evaluar los datos ingresados
         ax.clear()
         ax.plot(x, sl)
     except:
         ax.plot()
+        
     ax.axhline(0, color="black")
     ax.axvline(0, color="black")
-    ani.event_source.stop()#detener el evento
-def represent():
-    global graf_dt
-    global r3
-    global r1
-    t_ori=e_func.get()
-    if e_var.get()!="":
-        rann=e_var.get()
-        r3=rann.split(",")#separar el rango
-        r1=True
-    graf_dt=reemplazar(t_ori)
-    ani.event_source.start()
-#=============================================================================================================================================================
-#                                                                        Botones Y Barras                                                                    #
-#=============================================================================================================================================================
+    ani.event_source.stop()#Detener el evento
+    
 ani=anim.FuncAnimation(fg, animate, interval=1000)
-bo1=t.Button(ventana, text="graficar", command=represent)#Crear boton
-e_func=t.Entry(ventana, width=60)#Crear espacio de entrada
-e_var=t.Entry(ventana, width=20)#Crear entrada de variación
+#=============================================================================================================================================================
+#                                                                   Botones Y Barras de acción                                                               #
+#=============================================================================================================================================================
+bo1=t.Button(ventana, text="graficar", command=represent)#Crear botón de "graficar"
+e_func=t.Entry(ventana, width=60)#Crear espacio de entrada para ingresar función
+e_var=t.Entry(ventana, width=20)#Crear entrada de variación de rango en x
 bo1.pack(side=t.BOTTOM)
-e_var.pack(side=t.RIGHT)#Ubicar entrada de variación
-e_func.pack(side=t.BOTTOM)#Ubicar el espacio
+e_var.pack(side=t.RIGHT)#Ubicar entrada de variación de rango en x
+e_func.pack(side=t.BOTTOM)#Ubicar el espacio para ingresar función
 
 show()#Muestra la función ingresada sin necesidad de dar el rango de x
 ventana.mainloop()#Hacer visible la ventana
