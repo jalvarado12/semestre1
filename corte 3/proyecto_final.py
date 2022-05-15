@@ -22,22 +22,22 @@ style.use("fivethirtyeight")#Agregar un estilo a la grafica
 fg=Figure()#Crea el recuadro de la grafica
 ax=fg.add_subplot(111)#Contraer o alargar el recuadro(primer digito en el eje y, segundo digito en el eje x) del 1 al 9, desplazar con el tercer digito (de 1 a 6)
 cv=FigureCanvasTkAgg(fg, ventana)#Crea contenedor donde va a estar la grafica
-cv.draw()
 cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)#Expansión del contenedor
+cv.draw() #Para que aparezcan las modificaciones al contenedor
 tlb=NavigationToolbar2Tk(cv, ventana)#Importar iconos de navegación #toolbar
 tlb.update()#Actualizar los iconos
 
 #=============================================================================================================================================================
-#                                                             Rangos y Funciones especiales a graficar                                                       #
+#                                                          Rangos y Funciones especiales a graficar                                                          #
 #=============================================================================================================================================================
-r1=False #Rango1
-r2=""#Rango2
-r3=""#Rango3
+r1=False #Rango 1
+r2=""#Rango 2
+r3=""#Rango 3
 function_np={"sin":"np.sin","cos":"np.cos", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log", "abs":"np.abs"} #guardar las funciones especiales en un diccionario
 #=============================================================================================================================================================
-#                                       funciones
+#                                                                       Graficadora                                                                          #
 #=============================================================================================================================================================
-def reemplazar(p):
+def reemplazar(p): #Reemplaza la abreviación que usamos en las funciones especiales por su metodo para que funcionen al graficarlas
     for i in function_np:
         if i in p:
             p=p.replace(i, function_np[i])
@@ -57,7 +57,7 @@ def animate(i):
         except:
             messagebox.showwarning("el rango es incorrecto")
             r1=False
-            e_var.delete(0, len(e_var.get()))#devuelve lo que esta dentro de la variable y la borra
+            e_var.delete(0, len(e_var.get()))#Devuelve lo que esta dentro de la variable y la borra
     else:
         if r2!="":
          x=np.arange(r2[0], r2[1], 0.01)   
@@ -84,16 +84,15 @@ def represent():
     graf_dt=reemplazar(t_ori)
     ani.event_source.start()
 #=============================================================================================================================================================
-#                                       ventanas
+#                                                                        Botones Y Barras                                                                    #
 #=============================================================================================================================================================
 ani=anim.FuncAnimation(fg, animate, interval=1000)
-show()
-bo1=t.Button(ventana, text="graficar", command=represent)#crear boton
-e_func=t.Entry(ventana, width=60)#crear espacio de entrada
-e_var=t.Entry(ventana, width=20)#crear entrada de variación
+bo1=t.Button(ventana, text="graficar", command=represent)#Crear boton
+e_func=t.Entry(ventana, width=60)#Crear espacio de entrada
+e_var=t.Entry(ventana, width=20)#Crear entrada de variación
 bo1.pack(side=t.BOTTOM)
-e_var.pack(side=t.RIGHT)#ubicar entrada de variación
-e_func.pack(side=t.BOTTOM)#ubicar el espacio
+e_var.pack(side=t.RIGHT)#Ubicar entrada de variación
+e_func.pack(side=t.BOTTOM)#Ubicar el espacio
 
-
-ventana.mainloop()#Hacer que la ventana cierre bien
+show()#Muestra la función ingresada sin necesidad de dar el rango de x
+ventana.mainloop()#Hacer visible la ventana
