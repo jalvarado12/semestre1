@@ -1,5 +1,5 @@
 #=============================================================================================================================================================
-#                                                                        Modulos
+#                                                                          Modulos                                                                           #
 #=============================================================================================================================================================
 import tkinter as t
 from tkinter import messagebox
@@ -11,8 +11,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolb
 import numpy as np
 from math import*
 import math
+
 #=============================================================================================================================================================
-#                                                           Caracteristicas de la ventana
+#                                                               Caracteristicas de la ventana                                                                #
 #=============================================================================================================================================================
 ventana=t.Tk()#Crear ventana de tkinter
 ventana.title("Fun Graphic")#Titulo de la ventana
@@ -22,24 +23,24 @@ fg=Figure()#Crea el recuadro de la grafica
 ax=fg.add_subplot(111)#Contraer o alargar el recuadro(primer digito en el eje y, segundo digito en el eje x) del 1 al 9, desplazar con el tercer digito (de 1 a 6)
 cv=FigureCanvasTkAgg(fg, ventana)#Crea contenedor donde va a estar la grafica
 cv.draw()
-cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)#expansión del contenedor
-tlb=NavigationToolbar2Tk(cv, ventana)#importar iconos de navegación #toolbar
-tlb.update()
-cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)
+cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)#Expansión del contenedor
+tlb=NavigationToolbar2Tk(cv, ventana)#Importar iconos de navegación #toolbar
+tlb.update()#Actualizar los iconos
+
 #=============================================================================================================================================================
-#                                       rangos y funciones a graficar
+#                                                             Rangos y Funciones especiales a graficar                                                       #
 #=============================================================================================================================================================
-r1=False #rango1
-r2=""#rango2
-r3=""#rango3
-fun={"sin":"np.sin","cos":"np.cos", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log", "abs":"np.abs"} #guardar las funciones en un diccionario
+r1=False #Rango1
+r2=""#Rango2
+r3=""#Rango3
+function_np={"sin":"np.sin","cos":"np.cos", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log", "abs":"np.abs"} #guardar las funciones especiales en un diccionario
 #=============================================================================================================================================================
 #                                       funciones
 #=============================================================================================================================================================
 def reemplazar(p):
-    for i in fun:
+    for i in function_np:
         if i in p:
-            p=p.replace(i, fun[i])
+            p=p.replace(i, function_np[i])
     return p
     
 def animate(i):
