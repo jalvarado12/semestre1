@@ -1,5 +1,5 @@
 #=============================================================================================================================================================
-#                                       modulos
+#                                                                        Modulos
 #=============================================================================================================================================================
 import tkinter as t
 from tkinter import messagebox
@@ -12,15 +12,15 @@ import numpy as np
 from math import*
 import math
 #=============================================================================================================================================================
-#                                       caracteristicas de la ventana
+#                                                           Caracteristicas de la ventana
 #=============================================================================================================================================================
-ventana=t.Tk()#crear ventana de tkinter
-ventana.title("Fun Graphic")#titulo de la ventana
-ventana.geometry("900x800")#tamaño de la ventana
-style.use("fivethirtyeight")#agregar un estilo al contenedor
-fg=Figure()#crear una figura
-ax=fg.add_subplot(111)#crear eje x
-cv=FigureCanvasTkAgg(fg, ventana)#crea contenedor donde va a estar la grafica
+ventana=t.Tk()#Crear ventana de tkinter
+ventana.title("Fun Graphic")#Titulo de la ventana
+ventana.geometry("900x800")#Tamaño de la ventana
+style.use("fivethirtyeight")#Agregar un estilo a la grafica
+fg=Figure()#Crea el recuadro de la grafica
+ax=fg.add_subplot(111)#Contraer o alargar el recuadro(primer digito en el eje y, segundo digito en el eje x) del 1 al 9, desplazar con el tercer digito (de 1 a 6)
+cv=FigureCanvasTkAgg(fg, ventana)#Crea contenedor donde va a estar la grafica
 cv.draw()
 cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)#expansión del contenedor
 tlb=NavigationToolbar2Tk(cv, ventana)#importar iconos de navegación #toolbar
