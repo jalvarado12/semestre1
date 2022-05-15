@@ -47,10 +47,10 @@ def represent():
     global graf_dt
     global r3
     global r1
-    texto_ori=e_func.get()#El texto que obtiene de la barra para ingresar la función 
-    if e_var.get()!="":
-        rann=e_var.get()#El rango en x que obtiene de la barra para ingresar rango
-        r3=rann.split(",")#Separar el rango
+    texto_ori=func_entry.get()#El texto que obtiene de la barra para ingresar la función 
+    if range_entry.get()!="":
+        range_x=range_entry.get()#El rango en x que obtiene de la barra para ingresar rango
+        r3=range_x.split(",")#Separar el rango
         r1=True
     graf_dt=reemplazar(texto_ori)
     ani.event_source.start()
@@ -69,7 +69,7 @@ def animate(i):
         except:
             messagebox.showwarning("el rango es incorrecto")
             r1=False
-            e_var.delete(0, len(e_var.get()))#Devuelve lo que esta dentro de la variable y la borra
+            range_entry.delete(0, len(range_entry.get()))#Borra lo que haya en el recuadro de rango de x
     else:
         if r2!="":
          x=np.arange(r2[0], r2[1], 0.01)   
@@ -91,11 +91,11 @@ ani=anim.FuncAnimation(fg, animate, interval=1000)
 #                                                                   Botones Y Barras de acción                                                               #
 #=============================================================================================================================================================
 bo1=t.Button(ventana, text="graficar", command=represent)#Crear botón de "graficar"
-e_func=t.Entry(ventana, width=60)#Crear espacio de entrada para ingresar función
-e_var=t.Entry(ventana, width=20)#Crear entrada de variación de rango en x
+func_entry=t.Entry(ventana, width=60)#Crear espacio de entrada para ingresar función
+range_entry=t.Entry(ventana, width=20)#Crear entrada de variación de rango en x
 bo1.pack(side=t.BOTTOM)
-e_var.pack(side=t.RIGHT)#Ubicar entrada de variación de rango en x
-e_func.pack(side=t.BOTTOM)#Ubicar el espacio para ingresar función
+range_entry.pack(side=t.RIGHT)#Ubicar entrada de variación de rango en x
+func_entry.pack(side=t.BOTTOM)#Ubicar el espacio para ingresar función
 
 show()#Muestra la función ingresada sin necesidad de dar el rango de x
 ventana.mainloop()#Hacer visible la ventana
