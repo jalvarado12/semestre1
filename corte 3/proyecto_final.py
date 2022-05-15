@@ -32,7 +32,7 @@ cv.get_tk_widget().pack(side=t.TOP, fill=t.BOTH, expand=1)
 r1=False #rango1
 r2=""#rango2
 r3=""#rango3
-fun={"sin":"np.sin","cos":"np.cos", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log"} #guardar las funciones en un diccionario
+fun={"sin":"np.sin","cos":"np.cos", "sqrt":"np.sqrt", "exp":"np.exp", "log":"np.log", "abs":"np.abs"} #guardar las funciones en un diccionario
 #=============================================================================================================================================================
 #                                       funciones
 #=============================================================================================================================================================
